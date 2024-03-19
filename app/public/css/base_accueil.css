@@ -1,0 +1,68 @@
+.stylepage {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: orange;
+}
+.header {
+    text-align: center;
+    background-color: orange;
+    color: white;
+    width: 100%;
+}
+.header a {
+    color: inherit;
+}
+/* .formulaire {
+    max-width: 400px;
+    margin-left: 5%;
+}
+.formulaire input {
+    margin-top: 5px;
+    margin-bottom: 15px;
+    font-family: inherit;
+    font-size: inherit;
+}
+.formulaire input[type=submit] {
+    font-size: large;
+    font-family: inherit;
+    color: white;
+    background-color: orange;
+    border-color: orange;
+    padding: 10px;
+    text-align: center;
+    
+}
+.formulaire label {
+    font-size: large;
+    font-weight: bold;
+} */
+.tableau {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.tableau th, .tableau td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.tableau th {
+    background-color: #f2f2f2;
+}
+
+.tableau tr:hover {
+    background-color: #f5f5f5;
+}
+
+.tableau button {
+    padding: 8px 12px;
+    background-color: orange;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.tableau button:hover {
+    background-color: rgb(215, 140, 0);
+}

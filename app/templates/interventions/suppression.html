@@ -1,0 +1,21 @@
+{% extends 'base_accueil.html' %}
+
+{% block title %}Supprimer une intervention{% endblock %}
+
+{% block body %}
+<h1>Confirmez la suppression de l'intervention :</h1>
+
+<form action="" method="post">
+    <ul>
+        <li>Standardiste : {{intervention['standardiste']}}</li>
+        <li>Titre : {{intervention['titre']}}</li>
+        <li>Client : {{intervention['client']}}</li>
+        <li>Suivi : {{intervention['suivi']}}</li>
+        <li>Niveau d'urgence : {{intervention['urgence']}}</li>
+        <li>Date de début : {{intervention['debut']}}</li>
+    </ul>
+    <input type="submit" name="confirmation" value="Supprimer">
+</form>
+<a href="../accueil.php">Annuler</a>
+
+{% endblock %}

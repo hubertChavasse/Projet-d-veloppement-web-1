@@ -1,0 +1,44 @@
+{% extends "base_auth.html" %}
+
+{% block title %}Connexion{% endblock %}
+
+{% block body %}
+<div class="gauche">
+    <div class="image"></div>
+</div>
+<div class="droite">
+    <h1 class="titre">Connexion</h1>
+    <p class="lien">
+        <a href="register.php">Pas encore de compte ?</a>
+    </p>
+    <div class="ligne"></div>
+    {% if msg %}
+        <div>{{msg}}</div>
+    {% endif %}
+    <form action="" method="post" class="formulaire">
+        <div>
+            <label for="email">Email</label><br>
+            <input class="input"
+                type="email" 
+                id="email"
+                name="email"
+                required="required"
+                placeholder="Entrez votre email"
+            />
+        </div>
+        <div>
+            <label for="password">Password</label><br>
+            <input class="input"
+                type="password" 
+                id="password"
+                name="password"
+                required="required"
+                placeholder="Entrez votre mot de passe"
+            />
+        </div>
+        
+        <div>
+            <input type="submit" value="Se connecter" name="send"/>
+        </div>
+    </form>
+{% endblock %}

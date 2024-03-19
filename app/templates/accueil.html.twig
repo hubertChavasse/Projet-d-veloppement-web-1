@@ -1,0 +1,173 @@
+{% extends "base_accueil.html" %}
+
+{% block title %}Accueil{% endblock %}
+
+
+{% block body %}
+
+{% if true %}
+    {% if user['role'] == admin or (user['role'] == standardiste and not modif) %}
+        <h1>Toutes les interventions</h1>
+    {% else %}
+        <h1>Mes interventions</h1>
+        <h3><a href="accueil.php?historique">Historique</a></h3>
+    {% endif %}
+    {% if  modif %}
+        <h3><a href="interventions/ajout.php">Nouvelle intervention</a></h3>
+    {% endif %}
+    <table class="tableau">
+        <thead>
+            <tr>
+                {% if user['role'] != 'standardiste' or not modif %}
+                <th>Standardiste</th>
+                {% endif %}
+                <th>Titre</th>
+                {% if user['role'] != 'client' %}
+                <th>Client</th>
+                {% endif %}
+                <th>Suivi</th>
+                <th>Niveau d'urgence</th>
+                <th>Date de début</th>
+                <th>Date de fin</th>
+                <th>Intervenants</th>
+                {% if modif %}<th></th>{% endif %}
+                <th></th>
+            </tr>
+        </thead>
+        {% for intervention in interventions %}
+        {% if intervention['urgence'] %}
+        <tr>
+            {% if user['role'] != 'standardiste' or not modif %}
+            <td>{{intervention['standardiste']}}</td>
+            {% endif %}
+            <td>{{intervention['titre']}}</td>
+            {% if user['role'] != 'client' %}
+            <td>{{intervention['client']}}</td>
+            {% endif %}
+            <td>{{intervention['suivi']}}</td>
+            <td>{{intervention['urgence']}}</td>
+            <td>{{intervention['debut']}}</td>
+            {% if intervention['fin'] == '0000-01-01 00:00:00' %}
+                <td>En cours</td>
+            {% else %}
+                <td>{{intervention['fin']}}</td>
+            {% endif %}
+            <td><ul>
+                {% for intervenant in intervention['intervenants'] %}
+                <li>{{ intervenant['email'] }}</li>
+                {% endfor %}
+            </ul></td>
+            {% set id = '' ~ intervention['id'] %}
+            {% if modif %}
+                <td>
+                <!-- '~' concatène 2 variables en les convertissant en string -->
+                <p><a href= 'interventions/modification.php?id={{ id }}'>Modifier</a></p>
+                <p><a href= "interventions/suppression.php?id={{ id }}">Supprimer</a></p>
+                </td>
+            {% endif %}
+            <td>
+            <p><a href= 'commentaires.php?id={{ id }}'>Commentaires</a></p>
+            </td>
+        </tr>
+        {% endif %}
+        {% endfor %}
+    </table>
+
+
+{# {% elseif user['role'] == 'admin' %}
+    <h1>Gestion des interventions</h1>
+    <h3><a href="interventions/ajout.php">Nouvelle intervention</a></h3>
+    <table class="tableau">
+        <thead>
+            <tr>
+                <th>Standardiste</th>
+                <th>Titre</th>
+                <th>Client</th>
+                <th>Suivi</th>
+                <th>Niveau d'urgence</th>
+                <th>Date de début</th>
+                <th>Intervenants</th>
+                <th></th>
+            </tr>
+        </thead>
+        {% for intervention in interventions %}
+        {% if intervention['urgence'] %}
+        <tr>
+            <td>{{intervention['standardiste']}}</td>
+            <td>{{intervention['titre']}}</td>
+            <td>{{intervention['client']}}</td>
+            <td>{{intervention['suivi']}}</td>
+            <td>{{intervention['urgence']}}</td>
+            <td>{{intervention['debut']}}</td>
+            <td><ul>
+                {% for intervenant in intervention['intervenants'] %}
+                <li{{ intervenant['email'] }}</li>
+                {% endfor %}
+            </ul></td>
+            {% if modif %}
+                <td>
+                {% set id = '' ~ intervention['id'] %}
+                <!-- '~' concatène 2 variables en les convertissant en string -->
+                <p><a href= 'interventions/modification.php?id={{ id }}'>Modifier</a></p>
+                <p><a href= "interventions/suppression.php?id={{ id }}">Supprimer</a></p>
+                </td>
+            {% endif %}
+        </tr>
+        {% endif %}
+        {% endfor %}
+    </table>
+
+{% elseif user['role'] == 'standardiste' %}
+    {% if modif %}
+        <h1>Mes interventions</h1>
+        <h3><a href="interventions/ajout.php">Nouvelle intervention</a></h3>
+    {% else %}
+        <h1>Toutes les interventions</h1>
+    {% endif %}
+
+    <table class="tableau">
+        <thead>
+            <tr>
+                <th>Titre</th>
+                <th>Client</th>
+                <th>Suivi</th>
+                <th>Niveau d'urgence</th>
+                <th>Date de début</th>
+                <th>Intervenants</th>
+                {% if modif %} <th></th> {% endif %}
+            </tr>
+        </thead>
+        {% for intervention in interventions %}
+        {% if intervention['urgence'] %}
+        <tr>
+            <td>{{intervention['titre']}}</td>
+            <td>{{intervention['client']}}</td>
+            <td>{{intervention['suivi']}}</td>
+            <td>{{intervention['urgence']}}</td>
+            <td>{{intervention['debut']}}</td>
+            {% if intervention['fin'] == '0000-01-01' %}
+                <td>Terminée</td>
+            {% else %}
+                <td>{{intervention['fin']}}</td>
+            {% endif %}
+            <td><ul>
+                {% for intervenant in intervention['intervenants'] %}
+                <li>{{ intervenant['email'] }}</li>
+                {% endfor %}
+            </ul></td>
+            {% if modif %}
+                <td>
+                {% set id = '' ~ intervention['id'] %}
+                <p><a href= 'interventions/modification.php?id={{ id }}'>Modifier</a></p>
+                <p><a href= "interventions/suppression.php?id={{ id }}">Supprimer</a></p>
+                </td>
+            {% endif %}
+        </tr>
+        {% endif %}
+        {% endfor %}
+    </table> #}
+
+{% endif %}
+
+
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends "base_auth.html" %}
+
+{% block body %}
+<div class="gauche">
+    <div class="image"></div>
+</div>
+<div class="droite">
+    <h1 class="titre">Créez votre compte</h1>
+    <p class="lien">
+        <a href="index.php">Déjà un compte ?</a>
+    </p>
+    <div class="ligne"></div>
+    <form action="" method="post" class="formulaire">
+        <div>
+            <label for="email">Email</label><br>
+            <input class="input"
+                type="email"
+                id="email"
+                name="email"
+                required="required"
+                placeholder="Entrez votre email"
+            />
+        </div>
+        <div>
+            <label for="email-cfg">Confirmation Email</label><br>
+            <input
+                type="email-cfg"
+                id="email-cfg"
+                name="email-cfg"
+                required="required"
+                placeholder="Confirmez votre email"
+            />
+        </div>
+        <div>
+            <label for="mdp">Mot de passe</label><br>
+            <input
+                type="password"
+                id="mdp"
+                name="mdp"
+                required="required"
+                placeholder="Entrez votre mot de passe"
+            />
+        </div>
+        <div>
+            <label for="mdp-cfg">Confirmation mot de passe</label><br>
+            <input
+                type="password"
+                id="mdp-cfg"
+                name="mdp-cfg"
+                required="required"
+                placeholder="Confirmez votre mot de passe"
+            />
+        </div>
+        <div>
+            <input type="submit" value="Créer" name="send">
+        </div>
+    </form>
+</div>
+{% endblock %}

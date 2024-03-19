@@ -1,0 +1,29 @@
+{% extends 'base_accueil.html' %}
+
+{% block title %}Utilisateurs{% endblock %}
+
+{% block body %}
+<table class="tableau">
+    <thead>
+        <tr>
+            <th>id</th>
+            <th>email</th>
+            <th>role</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody class="tableau">
+        {% for singleUser in users %}
+            <tr>
+                <td>{{ singleUser['id'] }}</td>
+                <td>{{ singleUser['email'] }}</td>
+                <td>{{ singleUser['role'] }}</td>
+                <td>
+                    <button type="button">Modifier</button>
+                    <button type="button">Supprimer</button>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

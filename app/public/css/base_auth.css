@@ -1,0 +1,76 @@
+.stylepage {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: orange;
+}
+.gauche {
+    float: left;
+    width: 50%;
+    background: url('/images/background_register.webp') no-repeat left center;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+}
+.titre {
+    text-align: center;
+}
+.droite {
+    float: right;
+    width: 50%;
+}
+.lien {
+    text-align: center;
+}
+.lien a {
+    color: inherit;
+}
+.formulaire {
+    max-width: 400px;
+    margin-left: 5%;
+}
+.formulaire input {
+    margin-top: 5px;
+    margin-bottom: 15px;
+    font-family: inherit;
+    font-size: inherit;
+}
+.formulaire input[type=submit] {
+    font-size: large;
+    font-family: inherit;
+    color: white;
+    background-color: orange;
+    border-color: orange;
+    padding: 10px;
+    text-align: center;
+    
+}
+.formulaire label {
+    font-size: large;
+    font-weight: bold;
+}
+.ligne {
+    width: 100%;
+    background-color: orange;
+    height: 3px;
+    margin-bottom: 10px;;
+    margin-left: auto;
+    margin-right: auto;
+}
+.tableau {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.tableau th, .tableau td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.tableau th {
+    background-color: #f2f2f2;
+}
+
+.tableau tr:hover {
+    background-color: #f5f5f5;
+}

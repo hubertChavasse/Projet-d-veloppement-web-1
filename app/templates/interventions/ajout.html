@@ -1,0 +1,21 @@
+{% extends 'base_accueil.html' %}
+
+{% block title %}Nouvelle intervention{% endblock %}
+
+{% block body %}
+<form action="" method="post">
+    <p>Titre de l'intervention : <input type="text" name="titre" required></p>
+    <p>Client :
+    <select name="idClient">
+        {% for client in clients %}
+        <option value={{client['id']}}>{{client['email']}}</option>
+        {% endfor %}
+    </select></p>
+    <p>Suivi : <input type="text" name="suivi"></p>
+    <p>Début de l'intervention : <input type="date" name="debut" required></p>
+    <p>Fin de l'intervention : <input type="date" name="fin"></p>
+    <p>Niveau d'urgence : <input type="number" name="urgence" min="1" max="5" value="1"></p>
+    <input type="submit" value="Créer">
+    <a href="../accueil.html">Annuler</a>
+</form>
+{% endblock %}

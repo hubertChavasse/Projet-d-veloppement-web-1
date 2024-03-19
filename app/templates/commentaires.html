@@ -1,0 +1,23 @@
+{% extends "base_comm.html" %}
+
+{% block title %}Commentaires{% endblock %}
+
+{% block body %}
+
+<div class="groupeCommentaires">
+{% for commentaire in commentaires %}
+
+<div class={{ commentaire['id_user'] == user['id'] ? 'monCommentaire' : 'autreCommentaire' }}>
+    <div class="auteur">{{commentaire['email']}}</div>
+    <div class="texte">{{commentaire['texte_comm']}}</div>
+    <div class="date_comm">{{commentaire['date_comm']}}</div>
+</div>
+{% endfor %}
+</div>
+<form action="" method="post" class="nouveauCommentaire">
+    <input type="text" name="nouveauCommentaire" placeholder="Nouveau commentaire">
+    <input type="submit" value="Publier">
+</form>
+<a href="accueil.html.twig">Retour</a>
+
+{% endblock %}

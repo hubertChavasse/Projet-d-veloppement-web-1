@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accord Energie | {% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="/css/base_accueil.css">
+</head>
+<body class="stylepage">
+        <table class="header"><tr>
+            {% if user['role'] == 'client' %}
+
+            <td><h1>Client</h1></td>
+            <td><h3>
+                <a href="../accueil.php">Mes interventions</a>
+            </h3></td>
+
+            {% elseif user['role'] == 'admin' %}
+
+                <td><h1>Administrateur</h1></td>
+                <td><h3>
+                    <a href="../accueil.php">Gestion des interventions</a>
+                </h3></td>
+                <td><h3>
+                    <a href="admin/users.php">Gestion des utilisateurs</a>
+                </h3></td>
+
+            {% elseif user['role'] == 'standardiste' %}
+            
+                <td><h1>Standardiste</h1></td>
+                <td><h3>
+                    <a href="../accueil.php">Mes interventions</a>
+                </h3></td>
+                <td><h3>
+                    <a href="../accueil.php?all">Toutes les interventions</a>
+                </h3></td>
+            
+            {% elseif user['role'] == 'intervenant' %}
+            
+                <td><h1>header Intervenant</h1></td>
+            
+            {% else %}
+            
+            <h1>Erreur</h1>
+            
+            {% endif %}
+
+            <td><h3>
+                {{ user['email'] }} | 
+                <a href="deconnexion.php">Déconnexion</a>
+            </h3></td>
+        </tr></table>
+    
+    </div>
+    
+    {% block body %}{% endblock %}
+</body>
+</html>

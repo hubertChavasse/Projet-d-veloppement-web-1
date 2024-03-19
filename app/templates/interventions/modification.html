@@ -1,0 +1,29 @@
+{% extends 'base_accueil.html' %}
+
+{% block title %}Modification{% endblock %}
+
+{% block body %}
+<form action="" method="post">
+    <p>Titre de l'intervention : <input type="text" name="titre" value={{ infosIntervention['titre'] }} required></p>
+    <p>Client :
+    <select name="idClient">
+        {% for client in clients %}
+            {% if client['email'] == infosIntervention['client'] %}
+            <option value={{client['id']}} selected> {{client['email']}} </option>
+            {% else %}
+            <option value={{client['id']}}> {{client['email']}} </option>
+            {% endif %}
+        {% endfor %}
+    </select></p>
+    <p>Suivi : <input type="text" name="suivi" value={{ infosIntervention['suivi'] }}></p>
+    <!-- <p>Etat : <select name="etat">
+        <option value=true>En cours</option>
+        <option value=false>Terminée</option>
+    </select></p> -->
+    <p>Début de l'intervention : <input type="date" name="debut" value={{ infosIntervention['debut'] }} required></p>
+    <p>Fin de l'intervention : <input type="date" name="fin"></p>
+    <p>Niveau d'urgence : <input type="number" name="urgence" min="1" max="5" value={{ infosIntervention['urgence'] }}></p>
+    <input type="submit" value="Modifier">
+    <a href="../accueil.html">Annuler</a>
+</form>
+{% endblock %}

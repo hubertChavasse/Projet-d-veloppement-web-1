@@ -1,0 +1,43 @@
+{% extends "base_accueil.html" %}
+
+{% block title %}Accueil{% endblock %}
+
+
+{% block body %}
+    <h1>Toutes les interventions</h1>
+    <table class="tableau">
+        <thead>
+            <tr>
+                <th>Standardiste</th>
+                <th>Titre</th>
+                <th>Client</th>
+                <th>Suivi</th>
+                <th>Niveau d'urgence</th>
+                <th>Date de début</th>
+                <th>Intervenants</th>
+                <th></th>
+            </tr>
+        </thead>
+        {% for intervention in interventions %}
+        {% if intervention['urgence'] %}
+        <tr>
+            <td>{{intervention['standardiste']}}</td>
+            <td>{{intervention['titre']}}</td>
+            <td>{{intervention['client']}}</td>
+            <td>{{intervention['suivi']}}</td>
+            <td>{{intervention['urgence']}}</td>
+            <td>{{intervention['debut']}}</td>
+            <td><ul>
+                {% for intervenant in intervention['intervenants'] %}
+                <li{{ intervenant['email'] }}</li>
+                {% endfor %}
+            </ul></td>
+        </tr>
+        {% endif %}
+        {% endfor %}
+    </table>
+
+{% endif %}
+
+
+{% endblock %}
