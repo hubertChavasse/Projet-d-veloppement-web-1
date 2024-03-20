@@ -1,0 +1,13 @@
+{% extends 'base_accueil.html' %}
+
+{% block title %}Modification{% endblock %}
+
+{% block body %}
+<form action="" method="post">
+    <p>Nom <input type="text" name="nom" value={{urgence['nom']}}></p>
+    <p>Niveau <input type="number" name="niveau" value={{urgence['id']}}></p>
+
+    <input type="submit" value="Modifier">
+    <a href="liste.php">Annuler</a>
+</form>
+{% endblock %}

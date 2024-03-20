@@ -12,10 +12,7 @@ class Page
     {
         $prefixe = (substr_count(getcwd(), '/') == 4) ? "../" : "";
             // Test ternaire (var = (test) ? "vrai" : "faux";)
-            // getcwd() : retourne le chemin du fichier dans lequel on est
-            /* ancienne version :
-            $prefixe = (str_contains(getcwd(), 'admin')
-            or str_contains(getcwd(),'interventions')) ? "../" : "";*/
+            // getcwd() : retourne le chemin du fichier dans lequel on est*/
         $this->session = new Session();
         try {
             $this->pdo = new \PDO('mysql:host=mysql;dbname=b2-dev-web-1', "root", "");
@@ -23,7 +20,7 @@ class Page
             var_dump($e->getMessage());
             die();
         }
-        $loader = new \Twig\Loader\FilesystemLoader($prefixe . '../templates');  // un seul /.. au lieu de 2
+        $loader = new \Twig\Loader\FilesystemLoader($prefixe . '../templates');
         $this->twig = new \Twig\Environment($loader, [
             'cache' => $prefixe . '../var/cache/compilation_cache',
             'debug' => true
@@ -72,15 +69,7 @@ class Page
         // var_dump($users);
         return $users;
     }
-        // public function getUsers($field = '', $condition = '') {
-        //     $sql = "SELECT * FROM users WHERE $field = '$condition'";
-        //     $stmt = $this->pdo->prepare($sql);
-        //     $stmt ->execute();
-        //     $users = $stmt->fetchAll(\PDO::FETCH_ASSOC);
-        //     var_dump($users);
-        //     return $users;
-        // }
-    //
+
     public function insertIntervention(array $data) {
         $sql = "INSERT INTO interventions (id_standardiste, id_client, titre, suivi, urgence, debut, fin)
         VALUES (:id_standardiste, :id_client, :titre, :suivi, :urgence, :debut, :fin)";
@@ -156,9 +145,28 @@ class Page
         return $res;
     }
 
+    public function getUrgences($field = 1, $condition = 1){
+        if(!in_array($field,[1,'id','nom']))
+            return false;
+        $sql = "SELECT * FROM urgences WHERE $field = :condition";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':condition', $condition);
+        $stmt ->execute();
+        $res = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        // var_dump($res);
+        return $res;
+    }
+
+    public function updateUrgences($data){
+        $sql = "UPDATE urgences SET
+        id = :niveau, nom = :nom,
+        WHERE id = :id";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute($data);
+    }
+
     public function render(string $name, array $data) :string
     {
         return $this->twig->render($name, $data);
     }
-
 }

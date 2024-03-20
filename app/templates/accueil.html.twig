@@ -35,7 +35,6 @@
             </tr>
         </thead>
         {% for intervention in interventions %}
-        {% if intervention['urgence'] %}
         <tr>
             {% if user['role'] != 'standardiste' or not modif %}
             <td>{{intervention['standardiste']}}</td>
@@ -69,7 +68,6 @@
             <p><a href= 'commentaires.php?id={{ id }}'>Commentaires</a></p>
             </td>
         </tr>
-        {% endif %}
         {% endfor %}
     </table>
 

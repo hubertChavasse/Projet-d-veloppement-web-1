@@ -1,0 +1,33 @@
+{% extends 'base_accueil.html' %}
+
+{% block title %}Nouvelle intervention{% endblock %}
+
+{% block body %}
+
+<h3><a href="urgences/ajout.php">Nouveau niveau d'urgence</a></h3>
+<h1>Niveaux d'urgence</h1>
+<table class="tableau">
+    <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Niveau</th>
+            <th></th>
+        </tr>
+    </thead>
+    {% for urgence in urgences %}
+        <tr>
+        <td>{{urgence['nom']}}</td>
+        <td>{{urgence['id']}}</td>
+        {% set id = '' ~ urgence['id'] %}
+        <td>
+            <a href= "modification.php?id={{ id }}">Modifier</a>
+            <a href= "suppression.php?id={{ id }}">Supprimer</a>
+        </td>
+        </tr>
+    {% endfor %}
+</table>
+<input type="submit" value="Modifier">
+<a href="../accueil.php">Annuler</a>
+
+
+{% endblock %}

@@ -19,7 +19,6 @@
             </tr>
         </thead>
         {% for intervention in interventions %}
-        {% if intervention['urgence'] %}
         <tr>
             <td>{{intervention['standardiste']}}</td>
             <td>{{intervention['titre']}}</td>
@@ -33,7 +32,6 @@
                 {% endfor %}
             </ul></td>
         </tr>
-        {% endif %}
         {% endfor %}
     </table>
 

@@ -15,6 +15,14 @@
     <p>Début de l'intervention : <input type="date" name="debut" required></p>
     <p>Fin de l'intervention : <input type="date" name="fin"></p>
     <p>Niveau d'urgence : <input type="number" name="urgence" min="1" max="5" value="1"></p>
+    <p>
+        <select name="intervenant" id="intervenant">
+            {% for intervenant in intervenants %}
+            <option value={{intervenant['id']}}>{{intervenant['email']}}</option>
+            {% endfor %}
+        </select>
+        <button action="ajoutIntervenant">Ajouter un intervenant</button>
+    </p>
     <input type="submit" value="Créer">
     <a href="../accueil.html">Annuler</a>
 </form>

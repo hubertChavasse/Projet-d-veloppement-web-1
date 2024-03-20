@@ -44,14 +44,11 @@ if($page->session->hasrole('intervenant')) {
 }
 
 
-// if(isset())
-
-
 for ($i=0; $i<count($interventions); $i++) {  // AJOUT DES INTERVENANTS
     $interventions[$i]['intervenants'] = $page->getIntervenantsByIntervention($interventions[$i]['id']);
-    var_dump($interventions[$i]['intervenants']);
+    // var_dump($interventions[$i]['intervenants']);
 }
-var_dump($interventions[0]['intervenants']);
+// var_dump($interventions[0]['intervenants']);
 
 
 $data = ['user' => $user, 'interventions' => $interventions, 'modif' => $modif];
