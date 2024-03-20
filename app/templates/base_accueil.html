@@ -7,35 +7,36 @@
     <link rel="stylesheet" href="/css/base_accueil.css">
 </head>
 <body class="stylepage">
+    <!-- <h1>{{prefixe}}</h1> -->
         <table class="header"><tr>
             {% if user['role'] == 'client' %}
 
             <td><h1>Client</h1></td>
             <td><h3>
-                <a href="../accueil.php">Mes interventions</a>
+                <a href="{{prefixe}}accueil.php">Mes interventions</a>
             </h3></td>
 
             {% elseif user['role'] == 'admin' %}
 
                 <td><h1>Administrateur</h1></td>
                 <td><h3>
-                    <a href="../accueil.php">Gestion des interventions</a>
+                    <a href="{{prefixe}}accueil.php">Gestion des interventions</a>
                 </h3></td>
                 <td><h3>
-                    <a href="admin/users.php">Gestion des utilisateurs</a>
+                    <a href="{{prefixe}}admin/users.php">Gestion des utilisateurs</a>
                 </h3></td>
                 <td><h3>
-                    <a href="urgences/liste.php">Gestion des urgences</a>
+                    <a href="{{prefixe}}urgences/liste.php">Gestion des urgences</a>
                 </h3></td>
 
             {% elseif user['role'] == 'standardiste' %}
             
                 <td><h1>Standardiste</h1></td>
                 <td><h3>
-                    <a href="../accueil.php">Mes interventions</a>
+                    <a href="{{prefixe}}accueil.php">Mes interventions</a>
                 </h3></td>
                 <td><h3>
-                    <a href="../accueil.php?all">Toutes les interventions</a>
+                    <a href="{{prefixe}}accueil.php?all">Toutes les interventions</a>
                 </h3></td>
             
             {% elseif user['role'] == 'intervenant' %}
@@ -50,7 +51,7 @@
 
             <td><h3>
                 {{ user['email'] }} | 
-                <a href="deconnexion.php">Déconnexion</a>
+                <a href="{{prefixe}}deconnexion.php">Déconnexion</a>
             </h3></td>
         </tr></table>
     

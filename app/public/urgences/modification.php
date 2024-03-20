@@ -19,11 +19,11 @@ if(!$page->session->hasRole('admin')) {
     header('Location: ../index.php');
 }
 
-if (!$_SERVER["REQUEST_METHOD"] == "POST") {
+if (isset($_POST['nom']) or !isset($_POST['niveau'])) {
     $data = ['user' => $user,
         'urgence' => $page->getUrgences('id',$_GET['id'])[0]
     ];
-    var_dump($data);
+    // var_dump($data);
     echo $page->render('urgences/modification.html', $data);
 
 } else {  // REQUÊTE UPDATE
@@ -32,10 +32,12 @@ if (!$_SERVER["REQUEST_METHOD"] == "POST") {
         'nom' => $_POST['nom'],
         'niveau' => (int)$_POST['niveau']
     ];
-    var_dump($data);
-    $update = $page->updateInterventions($data);
-    if($update)
-        header('location: ../accueil.php');
-    else
-        var_dump("update raté");
+    // var_dump($data);
+    $urgences = getUrgences();
+    foreach($urgence as $urgences) {
+        if($_POST['niveau'] == $urgence) {
+            var_dump("id déjà présent");
+        }
+    }
+    $page->updateUrgences($data);
 }

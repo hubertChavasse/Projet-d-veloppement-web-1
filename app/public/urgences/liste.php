@@ -17,5 +17,5 @@ if(!$page->session->hasrole('admin')) {
 $urgences = $page->getUrgences();
 
 $data = ['user' => $user, 'urgences' => $urgences];
-var_dump($data);
+// var_dump($data);
 echo $page->render('urgences/liste.html', $data);

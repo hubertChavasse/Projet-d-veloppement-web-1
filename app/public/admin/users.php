@@ -14,4 +14,7 @@
 
     $users = $page->getAllUsers();
 
-    echo $page->render('admin/users/list.html.twig', ['user' => $user, 'users' => $users]);
+    echo $page->render('users/list.html.twig', ['user' => $user, 'users' => $users]);
+    // echo $page->render('admin/users/list.html.twig', ['user' => $user, 'users' => $users]);
+    //                     ^
+    // c'est le 'admin/' qui a fait l'erreur durant l'exposé

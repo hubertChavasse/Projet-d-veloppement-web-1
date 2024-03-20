@@ -167,6 +167,7 @@ class Page
 
     public function render(string $name, array $data) :string
     {
+        $data['prefixe'] = (substr_count(getcwd(), '/') == 4) ? "../" : "";
         return $this->twig->render($name, $data);
     }
 }
